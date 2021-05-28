@@ -1,0 +1,46 @@
+{
+  "name": "graphology-neo4j",
+  "version": "1.0.0",
+  "description": "Graphology utils for Neo4j",
+  "author": "Benoit Simard",
+  "license": "ISC",
+  "keywords": [
+    "neo4j",
+    "graph",
+    "graphlogy"
+  ],
+  "main": "./lib/umd/graphology-neo4j.min.js",
+  "module": "./lib/esm/",
+  "typings": "./lib/esm/",
+  "exports": {
+    "./": "./lib/esm"
+  },
+  "scripts": {
+    "clean": "rimraf lib/",
+    "lint": "esw . --ext .ts",
+    "compile": "tsc",
+    "build": "npm run clean && npm run lint && npm run compile && webpack --progress",
+    "test": "mocha --require ts-node/register ./test/**/*.ts"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.13.16",
+    "@types/mocha": "^8.2.2",
+    "@typescript-eslint/eslint-plugin": "^4.22.0",
+    "@typescript-eslint/parser": "^4.22.0",
+    "eslint": "^7.24.0",
+    "eslint-watch": "^7.0.0",
+    "graphology-types": "^0.19.2",
+    "mocha": "^8.3.2",
+    "rimraf": "^3.0.2",
+    "terser-webpack-plugin": "^5.1.1",
+    "ts-loader": "^9.1.0",
+    "ts-node": "^9.1.1",
+    "typescript": "^4.2.3",
+    "webpack": "^5.31.2",
+    "webpack-cli": "^4.6.0"
+  },
+  "peerDependencies": {
+    "graphology": "^0.19.3",
+    "neo4j-driver": "^4.3.0-beta01"
+  }
+}
