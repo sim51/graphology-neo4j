@@ -126,7 +126,6 @@ function isNode(object: unknown): boolean {
   if (
     object &&
     Object.prototype.hasOwnProperty.call(object, "identity") &&
-    Object.prototype.hasOwnProperty.call(object, "identity") &&
     Object.prototype.hasOwnProperty.call(object, "labels")
   ) {
     isNode = true;
