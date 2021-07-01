@@ -1,0 +1,14 @@
+node_modules
+*.tgz
+*.log
+*.swp
+.DS_Store
+package-lock.json
+.gitignore
+.npmignore
+docs
+examples
+test
+typedoc.json
+.editorconfig
+.prettierrc.json

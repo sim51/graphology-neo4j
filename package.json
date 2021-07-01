@@ -20,7 +20,8 @@
     "lint": "esw . --ext .ts",
     "compile": "tsc",
     "build": "npm run clean && npm run lint && npm run compile && webpack --progress",
-    "test": "mocha --require ts-node/register ./test/**/*.ts"
+    "test": "mocha --require ts-node/register ./test/**/*.ts",
+    "site": "typedoc && npm run examples:build"
   },
   "devDependencies": {
     "@babel/core": "^7.13.16",
@@ -35,6 +36,7 @@
     "terser-webpack-plugin": "^5.1.1",
     "ts-loader": "^9.1.0",
     "ts-node": "^9.1.1",
+    "typedoc": "^0.21.2",
     "typescript": "^4.2.3",
     "webpack": "^5.31.2",
     "webpack-cli": "^4.6.0"
