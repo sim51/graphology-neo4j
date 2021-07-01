@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Graphology utils for Neo4j",
   "author": "Benoit Simard",
-  "license": "ISC",
+  "license": "MIT",
   "keywords": [
     "neo4j",
     "graph",
