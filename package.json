@@ -7,7 +7,7 @@
   "keywords": [
     "neo4j",
     "graph",
-    "graphlogy"
+    "graphology"
   ],
   "main": "./lib/umd/graphology-neo4j.min.js",
   "module": "./lib/esm/",
