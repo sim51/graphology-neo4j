@@ -4,13 +4,19 @@
   "description": "Graphology utils for Neo4j",
   "author": "Benoit Simard",
   "license": "MIT",
+  "homepage": "https://sim51.github.io/graphology-neo4j",
+  "bugs": "https://github.com/sim51/graphology-neo4j/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sim51/graphology-neo4j.git"
+  },
   "keywords": [
     "neo4j",
     "graph",
     "graphology"
   ],
   "main": "./lib/umd/graphology-neo4j.min.js",
-  "module": "./lib/esm/",
+  "module": "./lib/esm/index.js",
   "typings": "./lib/esm/",
   "exports": {
     "./": "./lib/esm"
@@ -21,7 +27,8 @@
     "compile": "tsc",
     "build": "npm run clean && npm run lint && npm run compile && webpack --progress",
     "test": "mocha --require ts-node/register ./test/**/*.ts",
-    "site": "typedoc && npm run examples:build"
+    "site": "rimraf docs/ && typedoc",
+    "prepublishOnly": "npm run build && npm run site"
   },
   "devDependencies": {
     "@babel/core": "^7.13.16",
