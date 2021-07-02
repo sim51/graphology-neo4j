@@ -19,7 +19,7 @@
   "module": "./lib/esm/index.js",
   "typings": "./lib/esm/",
   "exports": {
-    "./": "./lib/esm"
+    ".": "./lib/esm/index.js"
   },
   "scripts": {
     "clean": "rimraf lib/",
