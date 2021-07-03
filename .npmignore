@@ -13,6 +13,7 @@ test
 .gitignore
 .npmignore
 .prettierrc.json
+.travis.yml
 package-lock.json
 tsconfig.json
 typedoc.json
