@@ -30,8 +30,8 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - name: Init db script
         run: ./test/assets/docker-init.sh
-      - run: npm install
       - run: npm install graphology neo4j-driver
+      - run: npm install
       - run: npm run lint
       - run: npm run compile
       - run: npm test
