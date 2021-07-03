@@ -19,7 +19,7 @@ jobs:
            - 7474:7474
            - 7687:7687
         env:
-           - NEO4J_AUTH:neo4j/admin
+           NEO4J_AUTH: neo4j/admin
     steps:
       - uses: actions/checkout@v2
       - name: Use Node.js ${{ matrix.node-version }}
