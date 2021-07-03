@@ -4,17 +4,15 @@ Create a graphology Graph from cypher queries
 
 ## Usage
 
-This library doesn’t include the Neo4j driver library as well as the
-Graphology one. They are peer dependencies, so you need to install them
-by yourself.
+This library doesn’t include the Neo4j driver library as well as the Graphology one.
+They are peer dependencies, so you need to install them by yourself.
 
     npm install neo4j-driver graphology graphology-neo4j
 
 ### Translate a cypher query to a graph
 
-You can create a graph directly from a cypher query. The method
-`cypherToGraph` will parse the whole result to find Neo4j nodes and
-relationships for building the graph.
+You can create a graph directly from a cypher query.
+The method `cypherToGraph` will parse the whole result to find Neo4j nodes and relationships for building the graph.
 
 This is the definition of this method :
 
@@ -46,8 +44,7 @@ const graph: Graph = await cypherToGraph({ driver }, "MATCH (n)-[r]->(m) RETURN 
 ```
 
 <div class="note">
-Your cypher query must returned `Node`, `Relationship`, `Path`, and
-Arrays of those.
+Your cypher query must returned `Node`, `Relationship`, `Path`, and Arrays of those.
 </div>
 
 ### Cypher graph projection
@@ -95,14 +92,11 @@ const graph = await cypherProjectionToGraph(
 
 ## The created Graph
 
-The graphology graph created is a multi directed graph, where self-loop
-are allowed (it’s like in Neo4j). But in Graphology the notion of
-`label` for nodes and `type` for relationships don’t exist. That’s why
-there is the `CypherToGraphOpts` object where you can define on which
-property those notions will be saved.
+The created graph is a multi directed graph, where self-loop are allowed (it’s like in Neo4j).
+But in Graphology the notion of `label` for nodes and `type` for relationships don’t exist.
+That’s why there is the `CypherToGraphOpts` object where you can define on which property those notions will be saved.
 
--   Graphology and Neo4j id are the same, but they are also stored on
-    nodes and edges in the property `@id`.
+-   Graphology and Neo4j id are the same, but they are also stored on nodes and edges in the property `@id`.
 
 -   Neo4j node’s labels are stored in the property `@labels`
 
@@ -110,5 +104,4 @@ property those notions will be saved.
 
 ## Development
 
-To run the tests you need to have a local Neo4j server with Movie
-database and the password set to `admin`
+To run the tests you need to have a local Neo4j server with Movie database and the password set to `admin`
