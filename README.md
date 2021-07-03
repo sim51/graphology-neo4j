@@ -1,4 +1,4 @@
-#  Graphology Neo4j
+#  Graphology Neo4j [![CI](https://github.com/sim51/graphology-neo4j/actions/workflows/test.yml/badge.svg)](https://github.com/sim51/graphology-neo4j/actions/workflows/test.yml)
 
 Create a graphology Graph from cypher queries
 
