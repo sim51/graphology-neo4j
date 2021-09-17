@@ -1,6 +1,6 @@
-#  Graphology Neo4j [![CI](https://github.com/sim51/graphology-neo4j/actions/workflows/test.yml/badge.svg)](https://github.com/sim51/graphology-neo4j/actions/workflows/test.yml)
+# Graphology Neo4j [![CI](https://github.com/sim51/graphology-neo4j/actions/workflows/test.yml/badge.svg)](https://github.com/sim51/graphology-neo4j/actions/workflows/test.yml)
 
-Create a graphology Graph from cypher queries
+Some graphology helpers for Neo4j
 
 ## Usage
 
@@ -34,7 +34,7 @@ This is the definition of this method :
 
 Example:
 
-``` typescript
+```typescript
 import * as neo4j from "neo4j-driver";
 import Graph from "graphology";
 import { cypherToGraph } from "graphology-neo4j";
@@ -47,7 +47,7 @@ const graph: Graph = await cypherToGraph({ driver }, "MATCH (n)-[r]->(m) RETURN 
 Your cypher query must returned `Node`, `Relationship`, `Path`, and Arrays of those.
 </div>
 
-### Cypher graph projection
+### Create a graph from a Cypher projection
 
 You can create a graph from a cypher projection as defined
 [here](https://neo4j.com/docs/graph-algorithms/current/projected-graph-model/cypher-projection/),
@@ -75,7 +75,7 @@ This is the definition of this method :
 
 Example:
 
-``` typescript
+```typescript
 import * as neo4j from "neo4j-driver";
 import Graph from "graphology";
 import { cypherProjectionToGraph } from "graphology-neo4j";
@@ -90,17 +90,25 @@ const graph = await cypherProjectionToGraph(
 );
 ```
 
-## The created Graph
+### Export a graphology graph as a Cypher script
 
-The created graph is a multi directed graph, where self-loop are allowed (it’s like in Neo4j).
+You can export a graph as cypher script, with the help of the method `exportToCypher`.
+
+Example : `const cypherScript = exportToCypher(graph)`
+
+It generates a cypher script with `CREATE` instructions.
+
+## The graphology Graph
+
+The graphology created graph is a multi directed graph, where self-loop are allowed (it’s like in Neo4j).
 But in Graphology the notion of `label` for nodes and `type` for relationships don’t exist.
 That’s why there is the `CypherToGraphOpts` object where you can define on which property those notions will be saved.
 
--   Graphology and Neo4j id are the same, but they are also stored on nodes and edges in the property `@id`.
+- Graphology and Neo4j id are the same, but they are also stored on nodes and edges in the property `@id`.
 
--   Neo4j node’s labels are stored in the property `@labels`
+- Neo4j node’s labels are stored in the property `@labels`
 
--   Neo4j edge’s type is stored in the property `@type`
+- Neo4j edge’s type is stored in the property `@type`
 
 ## Development
 

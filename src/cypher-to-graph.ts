@@ -98,6 +98,7 @@ function pushValueInGraph(value: unknown, graph: Graph, opts: CypherToGraphOpts)
  * @param opts Graphology attribut mapping for neo4j specific fields
  */
 function mergeNodeInGraph(node: Node, graph: Graph, opts: CypherToGraphOpts): void {
+  // TODO: cast properties ?
   const vertex: Vertex = { ...node.properties, [opts.id]: node.identity.toString(), [opts.labels]: node.labels };
   graph.mergeNode(node.identity.toString(), vertex);
 }
