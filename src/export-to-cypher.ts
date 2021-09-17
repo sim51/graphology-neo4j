@@ -26,7 +26,7 @@ export function exportToCypher(
   // Using the iterator
   for (const [edge, attributes, source, target] of graph.edgeEntries()) {
     if (attributes[opts.type])
-      cypher += ` CREATE (\`n_${source}\`)-[r:\`${attributes["@type"]}\` ${castPropertiesToCypher(
+      cypher += ` CREATE (\`n_${source}\`)-[:\`${attributes["@type"]}\` ${castPropertiesToCypher(
         attributes,
       )} ]->(\`n_${target}\`) \n`;
     else throw Error(`Edge ${edge} has no type defined`);

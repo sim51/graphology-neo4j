@@ -26,6 +26,7 @@ describe("Testing graph to cypher", function() {
       await session.run(cypher);
       assert.ok(true);
     } catch (e) {
+      console.log(e);
       assert.fail();
     } finally {
       session.close();
