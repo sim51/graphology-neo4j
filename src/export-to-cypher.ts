@@ -51,7 +51,7 @@ function castValueToCypher(value: unknown): string {
       case "boolean":
         return `${value === true ? "true" : "false"}`;
       default:
-        return `"${value.replace('"', '\\"')}"`;
+        return `"${String(value).replace('"', '\\"')}"`;
     }
   }
 }
