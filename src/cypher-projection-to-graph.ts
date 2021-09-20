@@ -1,5 +1,5 @@
 import Graph from "graphology";
-import { session, Driver, Neo4jError, Record, Session } from "neo4j-driver";
+import { session, Driver, Record, Session } from "neo4j-driver";
 import { Vertex, Edge, CypherToGraphOpts } from "./types";
 
 /**
@@ -44,7 +44,7 @@ export async function cypherProjectionToGraph(
       onCompleted: () => {
         resolveNodes();
       },
-      onError: (error: Neo4jError) => {
+      onError: (error: Error) => {
         neoSession.close();
         rejectNodes(error);
       },
@@ -66,7 +66,7 @@ export async function cypherProjectionToGraph(
         neoSession.close();
         resolveEdges();
       },
-      onError: (error: Neo4jError) => {
+      onError: (error: Error) => {
         neoSession.close();
         rejectEdges(error);
       },

@@ -47,7 +47,6 @@ function castValueToCypher(value: unknown): string {
     switch (typeof value) {
       case "number":
         return `${value}`;
-        break;
       case "boolean":
         return `${value === true ? "true" : "false"}`;
       default:

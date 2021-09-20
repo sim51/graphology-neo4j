@@ -1,5 +1,5 @@
 import Graph from "graphology";
-import { session, Driver, Neo4jError, Node, Path, PathSegment, Record, Relationship, Session } from "neo4j-driver";
+import { session, Driver, Node, Path, PathSegment, Record, Relationship, Session } from "neo4j-driver";
 import { Vertex, Edge, CypherToGraphOpts } from "./types";
 
 /**
@@ -43,7 +43,7 @@ export function cypherToGraph(
         neoSession.close();
         resolve(graph);
       },
-      onError: (error: Neo4jError) => {
+      onError: (error: Error) => {
         neoSession.close();
         reject(error);
       },
@@ -83,8 +83,9 @@ function pushValueInGraph(value: unknown, graph: Graph, opts: CypherToGraphOpts)
       pushValueInGraph(item, graph, opts);
     });
   } else if (Object.prototype.toString.call(value) === "[object Object]") {
-    Object.keys(value).forEach(key => {
-      pushValueInGraph(value[key], graph, opts);
+    const castValue = value as { [key: string]: unknown };
+    Object.keys(castValue as object).forEach(key => {
+      pushValueInGraph(castValue[key], graph, opts);
     });
   }
 }
