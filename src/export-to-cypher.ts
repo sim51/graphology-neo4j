@@ -37,7 +37,10 @@ export function exportToCypher(
 
 function castPropertiesToCypher(properties: { [key: string]: unknown }): string {
   return `{ ${Object.keys(properties)
-    .filter((name: string) => !["@id", "@labels", "@type"].includes(name))
+    .filter(
+      (name: string) =>
+        !["@id", "@labels", "@type"].includes(name) && properties[name] !== null && properties[name] != undefined,
+    )
     .map((name: string) => `\`${name}\`: ${castValueToCypher(properties[name])}`)} }`;
 }
 
