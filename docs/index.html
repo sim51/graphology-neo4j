@@ -3,8 +3,8 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>graphology-neo4j - v1.0.6 | graphology-neo4j - v1.0.6</title>
-	<meta name="description" content="Documentation for graphology-neo4j - v1.0.6">
+	<title>graphology-neo4j - v1.1.0 | graphology-neo4j - v1.1.0</title>
+	<meta name="description" content="Documentation for graphology-neo4j - v1.1.0">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<style type="text/css">:root {
   --color-background: #fdfdfd;
@@ -2674,7 +2674,7 @@ img {
 		<div class="container">
 			<div class="table-wrap">
 				<div class="table-cell">
-					<strong><a href="index.html">graphology-neo4j - v1.0.6</a></strong>
+					<strong><a href="index.html">graphology-neo4j - v1.1.0</a></strong>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -2702,6 +2702,9 @@ img {
 </header>
 <nav class="tsd-navigation secondary">
 	<ul>
+		<li class=" tsd-kind-interface">
+			<a href="interfaces/cyphertographopts.html" class="tsd-kind-icon">Cypher<wbr>ToGraph<wbr>Opts</a>
+		</li>
 		<li class=" tsd-kind-type-alias">
 			<a href="modules.html#edge" class="tsd-kind-icon">Edge</a>
 		</li>
@@ -2714,25 +2717,28 @@ img {
 		<li class=" tsd-kind-function">
 			<a href="modules.html#cyphertograph" class="tsd-kind-icon">cypher<wbr>ToGraph</a>
 		</li>
+		<li class=" tsd-kind-function">
+			<a href="modules.html#exporttocypher" class="tsd-kind-icon">export<wbr>ToCypher</a>
+		</li>
 	</ul>
 </nav>
 <div class="container container-main">
 	<div class="content-wrap">
 		<div class="tsd-panel tsd-typography">
-			<a href="#graphology-neo4j" id="graphology-neo4j" style="color: inherit; text-decoration: none;">
-				<h1>Graphology Neo4j</h1>
+			<a href="#graphology-neo4j-" id="graphology-neo4j-" style="color: inherit; text-decoration: none;">
+				<h1>Graphology Neo4j <a href="https://github.com/sim51/graphology-neo4j/actions/workflows/test.yml"><img src="https://github.com/sim51/graphology-neo4j/actions/workflows/test.yml/badge.svg" alt="CI"></a></h1>
 			</a>
-			<p>Create a graphology Graph from cypher queries</p>
+			<p>Some graphology helpers for Neo4j</p>
 			<a href="#usage" id="usage" style="color: inherit; text-decoration: none;">
 				<h2>Usage</h2>
 			</a>
-			<p>This library doesn’t include the Neo4j driver library as well as the<br>Graphology one. They are peer dependencies, so you need to install them<br>by yourself.</p>
+			<p>This library doesn’t include the Neo4j driver library as well as the Graphology one.<br>They are peer dependencies, so you need to install them by yourself.</p>
 			<pre><code><span style="color: #001080">npm</span><span style="color: #000000"> </span><span style="color: #001080">install</span><span style="color: #000000"> </span><span style="color: #001080">neo4j</span><span style="color: #000000">-</span><span style="color: #001080">driver</span><span style="color: #000000"> </span><span style="color: #001080">graphology</span><span style="color: #000000"> </span><span style="color: #001080">graphology</span><span style="color: #000000">-</span><span style="color: #001080">neo4j</span>
 </code></pre>
 			<a href="#translate-a-cypher-query-to-a-graph" id="translate-a-cypher-query-to-a-graph" style="color: inherit; text-decoration: none;">
 				<h3>Translate a cypher query to a graph</h3>
 			</a>
-			<p>You can create a graph directly from a cypher query. The method<br><code>cypherToGraph</code> will parse the whole result to find Neo4j nodes and<br>relationships for building the graph.</p>
+			<p>You can create a graph directly from a cypher query.<br>The method <code>cypherToGraph</code> will parse the whole result to find Neo4j nodes and relationships for building the graph.</p>
 			<p>This is the definition of this method :</p>
 			<pre><code><span style="color: #008000">/**</span>
 <span style="color: #008000"> * Create a graphology graph based on the result of a cypher query.</span>
@@ -2759,11 +2765,10 @@ img {
 <span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">graph</span><span style="color: #000000">: </span><span style="color: #267F99">Graph</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #795E26">cypherToGraph</span><span style="color: #000000">({ </span><span style="color: #001080">driver</span><span style="color: #000000"> }, </span><span style="color: #A31515">&quot;MATCH (n)-[r]-&gt;(m) RETURN n,r,m&quot;</span><span style="color: #000000">);</span>
 </code></pre>
 			<div class="note">
-				Your cypher query must returned `Node`, `Relationship`, `Path`, and
-				Arrays of those.
+				Your cypher query must returned `Node`, `Relationship`, `Path`, and Arrays of those.
 			</div>
-			<a href="#cypher-graph-projection" id="cypher-graph-projection" style="color: inherit; text-decoration: none;">
-				<h3>Cypher graph projection</h3>
+			<a href="#create-a-graph-from-a-cypher-projection" id="create-a-graph-from-a-cypher-projection" style="color: inherit; text-decoration: none;">
+				<h3>Create a graph from a Cypher projection</h3>
 			</a>
 			<p>You can create a graph from a cypher projection as defined<br><a href="https://neo4j.com/docs/graph-algorithms/current/projected-graph-model/cypher-projection/">here</a>,<br>with the help of the method <code>cypherProjectionToGraph</code> .</p>
 			<p>This is the definition of this method :</p>
@@ -2799,28 +2804,40 @@ img {
 <span style="color: #000000">  { </span><span style="color: #001080">id:</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;_id&quot;</span><span style="color: #000000">, </span><span style="color: #001080">labels:</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;_labels&quot;</span><span style="color: #000000">, </span><span style="color: #001080">type:</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;_type&quot;</span><span style="color: #000000"> },</span>
 <span style="color: #000000">);</span>
 </code></pre>
-			<a href="#the-created-graph" id="the-created-graph" style="color: inherit; text-decoration: none;">
-				<h2>The created Graph</h2>
+			<a href="#export-a-graphology-graph-as-a-cypher-script" id="export-a-graphology-graph-as-a-cypher-script" style="color: inherit; text-decoration: none;">
+				<h3>Export a graphology graph as a Cypher script</h3>
 			</a>
-			<p>The graphology graph created is a multi directed graph, where self-loop<br>are allowed (it’s like in Neo4j). But in Graphology the notion of<br><code>label</code> for nodes and <code>type</code> for relationships don’t exist. That’s why<br>there is the <code>CypherToGraphOpts</code> object where you can define on which<br>property those notions will be saved.</p>
+			<p>You can export a graph as cypher script, with the help of the method <code>exportToCypher</code>.</p>
+			<p>Example : <code>const cypherScript = exportToCypher(graph)</code></p>
+			<p>It generates a cypher script with <code>CREATE</code> instructions.</p>
+			<a href="#the-graphology-graph" id="the-graphology-graph" style="color: inherit; text-decoration: none;">
+				<h2>The graphology Graph</h2>
+			</a>
+			<p>The graphology created graph is a multi directed graph, where self-loop are allowed (it’s like in Neo4j).<br>But in Graphology the notion of <code>label</code> for nodes and <code>type</code> for relationships don’t exist.<br>That’s why there is the <code>CypherToGraphOpts</code> object where you can define on which property those notions will be saved.</p>
 			<ul>
-				<li><p>Graphology and Neo4j id are the same, but they are also stored on<br>  nodes and edges in the property <code>@id</code>.</p>
+				<li><p>Graphology and Neo4j id are the same, but they are also stored on nodes and edges in the property <code>@id</code>.</p>
 				</li>
-				<li><p>  Neo4j node’s labels are stored in the property <code>@labels</code></p>
+				<li><p>Neo4j node’s labels are stored in the property <code>@labels</code></p>
 				</li>
-				<li><p>  Neo4j edge’s type is stored in the property <code>@type</code></p>
+				<li><p>Neo4j edge’s type is stored in the property <code>@type</code></p>
 				</li>
 			</ul>
 			<a href="#development" id="development" style="color: inherit; text-decoration: none;">
 				<h2>Development</h2>
 			</a>
-			<p>To run the tests you need to have a local Neo4j server with Movie<br>database and the password set to <code>admin</code></p>
+			<p>To run the tests you need to have a local Neo4j server with Movie database and the password set to <code>admin</code></p>
 		</div>
 		<div style="position:relative;"><a name="typedoc-main-index" class="tsd-anchor"></a></div>
 		<section class="tsd-panel-group tsd-index-group">
 			<h2>Index</h2>
 			<section class="tsd-panel tsd-index-panel">
 				<div class="tsd-index-content">
+					<section class="tsd-index-section ">
+						<h3>Interfaces</h3>
+						<ul class="tsd-index-list">
+							<li class="tsd-kind-interface"><a href="interfaces/cyphertographopts.html" class="tsd-kind-icon">Cypher<wbr>ToGraph<wbr>Opts</a></li>
+						</ul>
+					</section>
 					<section class="tsd-index-section ">
 						<h3>Type aliases</h3>
 						<ul class="tsd-index-list">
@@ -2833,6 +2850,7 @@ img {
 						<ul class="tsd-index-list">
 							<li class="tsd-kind-function"><a href="modules.html#cypherprojectiontograph" class="tsd-kind-icon">cypher<wbr>Projection<wbr>ToGraph</a></li>
 							<li class="tsd-kind-function"><a href="modules.html#cyphertograph" class="tsd-kind-icon">cypher<wbr>ToGraph</a></li>
+							<li class="tsd-kind-function"><a href="modules.html#exporttocypher" class="tsd-kind-icon">export<wbr>ToCypher</a></li>
 						</ul>
 					</section>
 				</div>
@@ -2846,7 +2864,7 @@ img {
 				<div class="tsd-signature tsd-kind-icon">Edge<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">BaseElement</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/sim51/graphology-neo4j/blob/7855097/src/types.ts#L7">types.ts:7</a></li>
+						<li>Defined in <a href="https://github.com/sim51/graphology-neo4j/blob/f2c2668/src/types.ts#L7">types.ts:7</a></li>
 					</ul>
 				</aside>
 			</section>
@@ -2856,7 +2874,7 @@ img {
 				<div class="tsd-signature tsd-kind-icon">Vertex<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">BaseElement</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/sim51/graphology-neo4j/blob/7855097/src/types.ts#L5">types.ts:5</a></li>
+						<li>Defined in <a href="https://github.com/sim51/graphology-neo4j/blob/f2c2668/src/types.ts#L5">types.ts:5</a></li>
 					</ul>
 				</aside>
 			</section>
@@ -2867,13 +2885,13 @@ img {
 				<a name="cypherprojectiontograph" class="tsd-anchor"></a>
 				<h3>cypher<wbr>Projection<wbr>ToGraph</h3>
 				<ul class="tsd-signatures tsd-kind-function">
-					<li class="tsd-signature tsd-kind-icon">cypher<wbr>Projection<wbr>ToGraph<span class="tsd-signature-symbol">(</span>neo4j<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>database<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>driver<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Driver</span><span class="tsd-signature-symbol"> }</span>, cypherNodes<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, cypherRelationships<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, params<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-symbol">{}</span>, opts<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">CypherToGraphOpts</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Graph</span><span class="tsd-signature-symbol">&gt;</span></li>
+					<li class="tsd-signature tsd-kind-icon">cypher<wbr>Projection<wbr>ToGraph<span class="tsd-signature-symbol">(</span>neo4j<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>database<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>driver<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Driver</span><span class="tsd-signature-symbol"> }</span>, cypherNodes<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, cypherRelationships<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, params<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-symbol">{}</span>, opts<span class="tsd-signature-symbol">?: </span><a href="interfaces/cyphertographopts.html" class="tsd-signature-type" data-tsd-kind="Interface">CypherToGraphOpts</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Graph</span><span class="tsd-signature-symbol">&gt;</span></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/sim51/graphology-neo4j/blob/7855097/src/cypher-projection-to-graph.ts#L15">cypher-projection-to-graph.ts:15</a></li>
+								<li>Defined in <a href="https://github.com/sim51/graphology-neo4j/blob/f2c2668/src/cypher-projection-to-graph.ts#L15">cypher-projection-to-graph.ts:15</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -2921,7 +2939,7 @@ img {
 								</ul>
 							</li>
 							<li>
-								<h5>opts: <span class="tsd-signature-type">CypherToGraphOpts</span><span class="tsd-signature-symbol"> = ...</span></h5>
+								<h5>opts: <a href="interfaces/cyphertographopts.html" class="tsd-signature-type" data-tsd-kind="Interface">CypherToGraphOpts</a><span class="tsd-signature-symbol"> = ...</span></h5>
 								<div class="tsd-comment tsd-typography">
 									<p>Allow you to defined the graphology attribut mapping for neo4j&#39;s ids (default @id), node&#39;s labels (default @labels) &amp; relationship&#39;s type (default @type).</p>
 								</div>
@@ -2936,13 +2954,13 @@ img {
 				<a name="cyphertograph" class="tsd-anchor"></a>
 				<h3>cypher<wbr>ToGraph</h3>
 				<ul class="tsd-signatures tsd-kind-function">
-					<li class="tsd-signature tsd-kind-icon">cypher<wbr>ToGraph<span class="tsd-signature-symbol">(</span>neo4j<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>database<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>driver<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Driver</span><span class="tsd-signature-symbol"> }</span>, cypher<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, params<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-symbol">{}</span>, opts<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">CypherToGraphOpts</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Graph</span><span class="tsd-signature-symbol">&gt;</span></li>
+					<li class="tsd-signature tsd-kind-icon">cypher<wbr>ToGraph<span class="tsd-signature-symbol">(</span>neo4j<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>database<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>driver<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Driver</span><span class="tsd-signature-symbol"> }</span>, cypher<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, params<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-symbol">{}</span>, opts<span class="tsd-signature-symbol">?: </span><a href="interfaces/cyphertographopts.html" class="tsd-signature-type" data-tsd-kind="Interface">CypherToGraphOpts</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Graph</span><span class="tsd-signature-symbol">&gt;</span></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/sim51/graphology-neo4j/blob/7855097/src/cypher-to-graph.ts#L14">cypher-to-graph.ts:14</a></li>
+								<li>Defined in <a href="https://github.com/sim51/graphology-neo4j/blob/f2c2668/src/cypher-to-graph.ts#L14">cypher-to-graph.ts:14</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -2984,7 +3002,7 @@ img {
 								</ul>
 							</li>
 							<li>
-								<h5>opts: <span class="tsd-signature-type">CypherToGraphOpts</span><span class="tsd-signature-symbol"> = ...</span></h5>
+								<h5>opts: <a href="interfaces/cyphertographopts.html" class="tsd-signature-type" data-tsd-kind="Interface">CypherToGraphOpts</a><span class="tsd-signature-symbol"> = ...</span></h5>
 								<div class="tsd-comment tsd-typography">
 									<p>Allow you to defined the graphology attribut mapping for neo4j&#39;s ids (default @id), node&#39;s labels (default @labels) &amp; relationship&#39;s type (default @type).</p>
 								</div>
@@ -2995,11 +3013,52 @@ img {
 					</li>
 				</ul>
 			</section>
+			<section class="tsd-panel tsd-member tsd-kind-function">
+				<a name="exporttocypher" class="tsd-anchor"></a>
+				<h3>export<wbr>ToCypher</h3>
+				<ul class="tsd-signatures tsd-kind-function">
+					<li class="tsd-signature tsd-kind-icon">export<wbr>ToCypher<span class="tsd-signature-symbol">(</span>graph<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Graph</span>, opts<span class="tsd-signature-symbol">?: </span><a href="interfaces/cyphertographopts.html" class="tsd-signature-type" data-tsd-kind="Interface">CypherToGraphOpts</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/sim51/graphology-neo4j/blob/f2c2668/src/export-to-cypher.ts#L11">export-to-cypher.ts:11</a></li>
+							</ul>
+						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>Create a cypher &quot;create&quot; script of the graph instance.</p>
+							</div>
+						</div>
+						<h4 class="tsd-parameters-title">Parameters</h4>
+						<ul class="tsd-parameters">
+							<li>
+								<h5>graph: <span class="tsd-signature-type">Graph</span></h5>
+								<div class="tsd-comment tsd-typography">
+									<p>A graphology instance</p>
+								</div>
+							</li>
+							<li>
+								<h5>opts: <a href="interfaces/cyphertographopts.html" class="tsd-signature-type" data-tsd-kind="Interface">CypherToGraphOpts</a><span class="tsd-signature-symbol"> = ...</span></h5>
+								<div class="tsd-comment tsd-typography">
+									<p>Allow you to defined the graphology attribut mapping for neo4j&#39;s ids (default @id), node&#39;s labels (default @labels) &amp; relationship&#39;s type (default @type).</p>
+								</div>
+							</li>
+						</ul>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+						<p>A graphology instance</p>
+					</li>
+				</ul>
+			</section>
 		</section>
 		<footer class="with-border-bottom">
 			<div class="container">
 				<h2>Legend</h2>
 				<div class="tsd-legend-group">
+					<ul class="tsd-legend">
+						<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
+					</ul>
 				</div>
 			</div>
 		</footer>
