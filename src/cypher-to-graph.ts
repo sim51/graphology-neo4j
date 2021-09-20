@@ -84,7 +84,7 @@ function pushValueInGraph(value: unknown, graph: Graph, opts: CypherToGraphOpts)
     });
   } else if (Object.prototype.toString.call(value) === "[object Object]") {
     const castValue = value as { [key: string]: unknown };
-    Object.keys(castValue as object).forEach(key => {
+    Object.keys(castValue).forEach(key => {
       pushValueInGraph(castValue[key], graph, opts);
     });
   }
