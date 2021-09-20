@@ -17,7 +17,7 @@ export function exportToCypher(
   // Using the iterator
   for (const [node, attributes] of graph.nodeEntries()) {
     if (attributes[opts.labels])
-      cypher += `CREATE (\`n_${node}\`:\`${attributes[opts.labels].join("`:`")}\`  ${castPropertiesToCypher(
+      cypher += `CREATE (\`n_${node}\`:\`${[].concat(attributes[opts.labels]).join("`:`")}\`  ${castPropertiesToCypher(
         attributes,
       )} ) \n`;
     else cypher += `CREATE (\`n_${node}\` ${castPropertiesToCypher(attributes)} ) \n`;
