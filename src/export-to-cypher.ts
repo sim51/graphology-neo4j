@@ -15,7 +15,7 @@ export function exportToCypher(
   let cypher = "";
 
   // Using the iterator
-  for (const [node, attributes] of graph.nodeEntries()) {
+  for (const { node, attributes } of graph.nodeEntries()) {
     if (attributes[opts.labels])
       cypher += `CREATE (\`n_${node}\`:\`${[].concat(attributes[opts.labels]).join("`:`")}\`  ${castPropertiesToCypher(
         attributes,
@@ -24,7 +24,7 @@ export function exportToCypher(
   }
 
   // Using the iterator
-  for (const [edge, attributes, source, target] of graph.edgeEntries()) {
+  for (const { edge, attributes, source, target } of graph.edgeEntries()) {
     if (attributes[opts.type])
       cypher += ` CREATE (\`n_${source}\`)-[:\`${attributes["@type"]}\` ${castPropertiesToCypher(
         attributes,
