@@ -17,7 +17,6 @@ describe("Testing graph to cypher", function() {
   it("should work", async () => {
     const graph = await cypherToGraph({ driver }, "MATCH (n)-[r]->(m) RETURN n,r,m");
     const cypher = exportToCypher(graph);
-    console.log(cypher);
 
     const session: neo4j.Session = driver.session({
       defaultAccessMode: neo4j.session.WRITE,

@@ -22,13 +22,13 @@ describe("Testing Cypher projection to graph", function() {
 
     assert.equal(graph.order, 133);
     assert.equal(graph.size, 362);
-    for (const [nodeKey, attributes] of graph.nodeEntries()) {
-      assert.equal(attributes["@id"], nodeKey);
+    for (const { node, attributes } of graph.nodeEntries()) {
+      assert.equal(attributes["@id"], node);
       assert.ok(attributes["@labels"]);
       assert.ok(attributes["@labels"][0]);
     }
-    for (const [edgeKey, attributes] of graph.edgeEntries()) {
-      assert.equal(attributes["@id"], edgeKey);
+    for (const { edge, attributes } of graph.edgeEntries()) {
+      assert.equal(attributes["@id"], edge);
       assert.ok(attributes["@type"]);
     }
   });
@@ -44,13 +44,13 @@ describe("Testing Cypher projection to graph", function() {
 
     assert.equal(graph.order, 133);
     assert.equal(graph.size, 362);
-    for (const [nodeKey, attributes] of graph.nodeEntries()) {
-      assert.equal(attributes["_id"], nodeKey);
+    for (const { node, attributes } of graph.nodeEntries()) {
+      assert.equal(attributes["_id"], node);
       assert.ok(attributes["_labels"]);
       assert.ok(attributes["_labels"][0]);
     }
-    for (const [edgeKey, attributes] of graph.edgeEntries()) {
-      assert.equal(attributes["_id"], edgeKey);
+    for (const { edge, attributes } of graph.edgeEntries()) {
+      assert.equal(attributes["_id"], edge);
       assert.ok(attributes["_type"]);
     }
   });
